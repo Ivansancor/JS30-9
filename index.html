@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS30-9</title>
+</head>
+<body>
+    <script>
+        const dogs = [ {name: "Coco", age: 12, fur: "white"},
+            {name: "Chispa", age: 6, fur: "black"},
+            {name: "Zayn", age: 5, fur: "brown"}
+        ];
+
+        console.log(dogs);
+        console.table(dogs);
+
+        console.log("You're a piece of %s shit", "shitty");
+        console.log("%c You're a piece of shit", "font-size: 20px; color: red;");
+
+        const eachDog = dogs.map(dog => `${dog.name} is ${dog.age}!`);
+        console.info(eachDog);
+        console.warn(eachDog);
+        console.error(eachDog);
+
+
+        const cuteDoggies = dogs.map(dog => {
+            console.group(`${dog.name}`);
+            console.log(dog.name);
+            console.log(dog.age);
+            console.log(dog.fur);
+            console.groupEnd(`${dog.name}`);
+            }
+        );
+
+        const cutieDoggies = dogs.map(dog => {
+                console.groupCollapsed(`${dog.name}`);
+                console.log(dog.name);
+                console.log(dog.age);
+                console.log(dog.fur);
+                console.groupEnd(`${dog.name}`);
+            }
+        );
+
+        console.count("Andre");
+        console.count("Ivi");
+        console.count("Andre");
+        console.count("Andre");
+        console.count("Andre");
+        console.count("Ivi");
+        console.count("Ivi");
+
+        const endpoint = "https://gist.githubusercontent.com/Miserlou/c5cd8364bf9b2420bb29/raw/2bf258763cdddd704f8ffd3ea9a3e81d25e2c6f6/cities.json";
+        console.time("fetchinggg");
+        fetch(endpoint)
+            .then(blob => blob.json())
+            .then(data => {
+                console.timeEnd("fetchinggg");
+                console.time("filteringgg");
+                const filtered = data.filter(data => data.population > 2000000);
+                console.timeEnd("filteringgg");
+                console.table(filtered);
+            }
+        );
+        
+    </script>
+</body>
+</html>
