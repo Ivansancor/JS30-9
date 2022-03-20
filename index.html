@@ -25,6 +25,10 @@
         console.error(eachDog);
 
 
+        let shitty = false;
+        console.assert(shitty, "ASSERTING, shitty is false")
+
+
         const cuteDoggies = dogs.map(dog => {
             console.group(`${dog.name}`);
             console.log(dog.name);
